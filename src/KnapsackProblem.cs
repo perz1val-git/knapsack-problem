@@ -2,9 +2,9 @@
 
 class KnapsackProblem
 {
-    public const int knapsackCapacity = 55;
-    public const int NumberOfTests = 10;
-    public const int MaximumItemWeightAndValue = 10;
+    public static int knapsackCapacity;
+    public static int MaximumItemWeightAndValue;
+    public static int NumberOfTests = 1;
 
     // Generate a set of random items
     public static KnapsackItem[] GenerateRandomItems()
@@ -25,6 +25,21 @@ class KnapsackProblem
 
     public static void Main(string[] args)
     {
+        try
+        {
+            knapsackCapacity = int.Parse(args[0]);
+            MaximumItemWeightAndValue = int.Parse(args[1]);
+            if (args.Length > 2)
+            {
+                NumberOfTests = int.Parse(args[2]);
+            }
+        }
+        catch (System.Exception)
+        {
+            Console.WriteLine("At least 2 integer arguments required!");
+            return;
+        }
+
         // Disable garbage collection for more consistent results
         GC.TryStartNoGCRegion(1024*1024*100);
 
